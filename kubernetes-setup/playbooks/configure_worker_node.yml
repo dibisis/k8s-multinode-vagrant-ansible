@@ -1,9 +1,14 @@
 ---
-- hosts: kubernetes-master-nodes
-  become: yes
+- hosts: all
+  become: true
+  debugger: on_failed
   tasks:
-  - name: Copy the join command to server location
-    copy: src=join-command dest=/tmp/join-command.sh mode=0777
+    - name: Copy the join command to server location
+      copy:
+        src: "join"
+        dest: /tmp/join-command.sh
+        mode: 0777
+      become: false
 
-  - name: Join the node to cluster
-    command: sh /tmp/join-command.sh
+    - name: Join the node to cluster
+      command: sh /tmp/join-command.sh

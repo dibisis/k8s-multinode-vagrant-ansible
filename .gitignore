@@ -81,3 +81,5 @@ fabric.properties
 .idea/misc.xml
 .idea/modules.xml
 /.idea/vcs.xml
+!/.vagrant/
+/kubernetes-setup/playbooks/join

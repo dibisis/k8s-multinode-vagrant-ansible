@@ -1,6 +1,7 @@
 ---
 - hosts: all
   become: true
+  debugger: on_failed
   tasks:
   - name: Add an apt signing key for Kubernetes
     apt_key:
@@ -24,10 +25,10 @@
         - kubeadm
         - kubectl
 
-  - name: Configure node ip
-    lineinfile:
-      path: /etc/default/kubelet
-      line: KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}
+    #  - name: Configure node ip
+    #    lineinfile:
+    #      path: /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+    #      line: KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}
 
   - name: Restart kubelet
     service:
