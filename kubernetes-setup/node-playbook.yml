@@ -1,0 +1,4 @@
+---
+- import_playbook: playbooks/pre-setup.yml
+- import_playbook: playbooks/setting_up.yml
+- import_playbook: playbooks/configure_worker_node.yml
